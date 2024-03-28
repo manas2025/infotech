@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infotech - Apply</title>
+    <link rel="stylesheet" href="/css/styles6.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="containerh">
+            <h1>Infotech</h1>
+            <nav>
+                <ul>
+                    <li><a href="/career">Career</a></li>
+                    <li><a href="/">About Us</a></li>
+
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br />
+    <br />
+    <h2 style="text-align: center;">Apply for Internship</h2>
+    <div class="outsidse">
+        <form action="/auth/apply" method="POST">
+            <div class="job-title-container">
+                <p style="text-align: center;" class="job-title">Title : <span id="jobTitle"></span></p>
+            </div>
+            <div id="application-form" style="display: flex; justify-content:space-around" class="form-container">
+                <div class="image-wrapper">
+                    <img src="https://blog.eduonix.com/wp-content/uploads/2021/09/benefits-of-custom-software-development.jpg"
+                        alt="Company Image">
+                </div>
+                <div class="text-wrapper">
+                    <div class="overlay-text">
+                        <h4 style="margin-bottom: 0px;">Infotech!</h4>
+                        <p style="margin-top: 0px;">We provide internship opportunities in various domains including
+                            Data Science, Machine Learning,
+                            Frontend Development, Backend Development,Andrioid, Java, and more...!</p>
+                    </div>
+                </div>
+            </div>
+            <div id="application-form" class="form-container">
+                <p><strong>Selection email:</strong> 1st/3rd week of Month</p>
+                <p><strong>Internship starts:</strong> 1st/3rd week of Manth</p>
+                <p>Please be advised that the start date of your internship is dependent on the batch you have been
+                    assigned to. Batch B1 is scheduled to begin on 5th of Month, while Batch B2 will commence on
+                    15th of Month. To ensure you are adequately informed and prepared, we strongly recommend checking
+                    your email
+                    inbox regularly, including your spam folder, for any upcoming instructions or updates.</p>
+            </div>
+            
+            <div id="application-form" class="form-container">
+                <input type="hidden" id="jobTitleInput" name="jobTitleInput">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">Contact Number</label>
+                <input type="text" id="email" name="number" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="qualification">Qualification</label>
+                <select id="qualification" name="qualification">
+                    <option value="">Select</option>
+                    <option value="Diploma">Diploma</option>
+                    <option value="Graduation">Graduation</option>
+                    <option value="Master">Masters</option>
+                    <option value="Others">Other</option>
+                </select>
+            </div>
+
+            <div id="application-form" class="form-container">
+                <label for="skilllevel">Mark Your Skill of Preferred Function</label>
+                <div class="scale">
+                    <input type="radio" id="level1" name="skilllevel" value="1">
+                    <label for="level1"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level2" name="skilllevel" value="2">
+                    <label for="level2"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level3" name="skilllevel" value="3">
+                    <label for="level3"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level4" name="skilllevel" value="4">
+                    <label for="level4"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level5" name="skilllevel" value="5">
+                    <label for="level5"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level6" name="skilllevel" value="6">
+                    <label for="level6"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level7" name="skilllevel" value="7">
+                    <label for="level7"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level8" name="skilllevel" value="8">
+                    <label for="level8"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level9" name="skilllevel" value="9">
+                    <label for="level9"><i class="fas fa-star"></i></label>
+
+                    <input type="radio" id="level10" name="skilllevel" value="10">
+                    <label for="level10"><i class="fas fa-star"></i></label>
+                </div>
+            </div>
+
+            <div id="application-form" class="form-container">
+                <label for="telegram-link">Joined our Telegram and LinkedIn for continued communication.</label>
+                <div class="checkbox-container">
+                    <input style="margin-top: 2%;" type="checkbox" id="telegram-link" name="telegram-link" required>
+                    <label for="telegram-link">Telegram community -
+                        <a href="https://web.telegram.org/" target="_blank">Telegram</a>
+                    </label>
+                    <br>
+                    <input type="checkbox" id="linkedin-link" name="linkedin-link" required>
+                    <label for="linkedin-link">LinkedIn - <a href="https://www.linkedin.com/company/____"
+                            target="_blank">LinkedIn</a></label>
+                </div>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">College Name</label>
+                <input type="text" id="college" name="college" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">LinkedIn Profile</label>
+                <input type="text" id="ld" name="ld" autocomplete="off" required>
+            </div>
+
+            <div id="application-form" class="form-container">
+                <label for="message">Github Profile</label>
+                <textarea id="project" name="project" placeholder="Your Projects with Github Link" required></textarea>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="learned-about">Where did you learn about INFOTECH ?</label>
+                <select id="learned-about" name="learnedabout">
+                    <option value="">Select</option>
+                    <option value="social-media">Social Media</option>
+                    <option value="job-portals">Job Portals</option>
+                    <option value="referral">Referral</option>
+                    <option value="campus-placement">Campus Placement Cell/Coordinators</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="accept-terms">I have understood the internship details and I hereby acknowledge and accept
+                    the
+                    terms and conditions.</label>
+                    <br/>
+                <input type="checkbox" id="accept-terms" name="accept-terms" required>
+                <label for="accept-terms">Yes</label>
+                <br/>
+                <button style="margin-top:3% ;" type="submit" class="button">Submit Application</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        const jobTitle = getQueryParam('jobTitle');
+        const jobTitleElement = document.getElementById('jobTitle');
+
+        const jobTitleInputElement = document.getElementById('jobTitleInput');
+        jobTitleElement.textContent = jobTitle;
+        jobTitleInputElement.value = jobTitle;
+
+
+        // JavaScript
+        document.addEventListener("DOMContentLoaded", function () {
+            const scale = document.querySelector('.scale');
+            const stars = scale.querySelectorAll('input[type="radio"]');
+
+            // Add event listener to each radio button
+            stars.forEach(function (star) {
+                star.addEventListener('change', function () {
+                    const selectedValue = parseInt(this.value);
+                    // Loop through stars, color up to the selected value
+                    for (let i = 0; i < selectedValue; i++) {
+                        scale.children[i].querySelector('i').classList.add('selected');
+                    }
+                    // Remove color from stars beyond the selected value
+                    for (let i = selectedValue; i < stars.length; i++) {
+                        scale.children[i].querySelector('i').classList.remove('selected');
+                    }
+                });
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

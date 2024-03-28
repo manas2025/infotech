@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infotech - Certification</title>
+    <link rel="stylesheet" href="/css/styles14.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="containerh">
+            <h1>Infotech</h1>
+            <nav>
+                <ul>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <br />
+    <br />
+    <h2 style="text-align: center;">Form for Internship Certificate</h2>
+    <div class="outsidse">
+        <form class="pay-form">
+            <div id="application-form" style="display: flex; justify-content:space-around" class="form-container">
+                <div class="image-wrapper">
+                    <img src="https://blog.eduonix.com/wp-content/uploads/2021/09/benefits-of-custom-software-development.jpg"
+                        alt="Company Image">
+                </div>
+                <div class="text-wrapper">
+                    <div class="overlay-text">
+                        <h4 style="margin-bottom: 0px;">Infotech!</h4>
+                        <p style="margin-top: 0px;">Everyone needs a little push sometimes. Whether you're starting out
+                            on a new career path or need a burst of motivation, these inspiring words will remind you
+                            that success is possible.</p>
+                    </div>
+                </div>
+            </div>
+            {{#if message}}
+            <div id="application-form" class="form-container">
+               <h4>{{message}}</h4>
+            </div>
+            {{/if}}
+
+            <div id="application-form" class="form-container">
+                <input type="hidden" id="jobTitleInput" name="jobTitleInput">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">Contact Number</label>
+                <input type="text" id="email" name="number" autocomplete="off" required>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="gender">Gender</label>
+                <select id="gender" name="gender">
+                    <option value="">Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Others">Others</option>
+                </select>
+            </div>
+
+
+            <div id="application-form" class="form-container">
+                <label for="telegram-link">Share Project on LinkedIn and tag Infotech</label>
+                <div class="checkbox-container">
+                    <input style="margin-top: 2%;" type="checkbox" id="linkedin-link" name="linkedin-link" required>
+                    <label for="linkedin-link">LinkedIn - <a href="https://www.linkedin.com/company/____"
+                            target="_blank">LinkedIn</a></label>
+                </div>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="email">LinkedIn Post Link</label>
+                <p style="margin-top: 2%;">It will be verified before a certificate issued.</p>
+                <input type="text" id="ld" name="ld" autocomplete="off" required>
+            </div>
+
+            <div id="application-form" class="form-container">
+                <label for="message">Your Experince</label>
+                <textarea id="project" name="project" placeholder="Share your experiance about work..."
+                    required></textarea>
+            </div>
+            <div id="application-form" class="form-container">
+                <label for="accept-terms">I have understood the payment details and I hereby acknowledge and accept
+                    the
+                    terms and conditions.</label>
+                <br />
+                <input style="margin-top: 2%;" type="checkbox" id="accept-terms" name="accept-terms" required>
+                <label for="accept-terms">Yes</label>
+                <br />
+                <button style="margin-top:3% ;" type="submit" class="button">Submit Application</button>
+            </div>
+
+        </form>
+    </div>
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script>
+        console.log("1")
+        $(document).ready(function () {
+            console.log("2")
+            $('.pay-form').submit(function (e) {
+                console.log("3")
+                e.preventDefault();
+
+                var formData = $(this).serialize();
+
+                $.ajax({
+                    url: "/auth/createOrder",
+                    type: "POST",
+                    data: formData,
+                    success: function (res) {
+                        if (res.success) {
+                            sendPaymentSuccess(res.order_id, res.product_name)
+                            var options = {
+                                "key": "" + res.key_id + "",
+                                "amount": "" + res.amount + "",
+                                "currency": "INR",
+                                "name": "" + res.product_name + "",
+                                "description": "" + res.description + "",
+                                "image": "https://images.gofreedownload.net/letter-i-violet-208493.jpg",
+                                "order_id": "" + res.order_id + "",
+                                "handler": function (response) {
+                                    alert("Payment Succeeded and form submitted");
+                                    window.open("final", "_self")
+                                },
+                                "prefill": {
+                                    "contact": "" + res.contact + "",
+                                    "name": "" + res.name + "",
+                                    "email": "" + res.email + ""
+                                },
+                                "notes": {
+                                    "description": "" + res.description + ""
+                                },
+                                "theme": {
+                                    "color": "#5b13b9"
+                                }
+                            };
+                            var razorpayObject = new Razorpay(options);
+                            razorpayObject.on('payment.failed', function (response) {
+                                alert("Payment Failed");
+                            });
+                            razorpayObject.open();
+                        }
+                        else {
+                            alert(res.msg);
+                        }
+                    }
+                })
+
+            });
+        });
+
+
+        function sendPaymentSuccess(planId, planName) {
+            $.ajax({
+                url: "/auth/paymentsuccess",
+                type: "POST",
+                data: { planId: planId, planName: planName },
+                success: function (response) {
+
+                },
+                error: function (xhr, status, error) {
+                    alert("Error in success: " + error);
+                }
+            });
+        }
+
+    </script>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Certifier API",
+    "version": "unknown"
+  },
+  "servers": [
+    {
+      "url": "https://api.certifier.io/v1"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "sec0": {
+        "type": "oauth2",
+        "flows": {}
+      }
+    }
+  },
+  "security": [
+    {
+      "sec0": []
+    }
+  ],
+  "paths": {},
+  "x-readme": {
+    "headers": [
+      {
+        "key": "Certifier-Version",
+        "value": "2022-10-26"
+      }
+    ]
+  },
+  "x-readme-fauxas": true
+}

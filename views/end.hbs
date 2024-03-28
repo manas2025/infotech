@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/css/styles13.css">
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="containerh">
+            <h1>Admin Panel</h1>
+            <nav>
+                <ul>
+                    <li><a href="#">Profile</a></li>
+                    <li><a href="/adminlogout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="left-menu">
+        <ul>
+            <li><a href="/home">Dashboard</a></li>
+            <li>
+                <a href="#">Recruitment</a>
+                <ul class="submenu">
+                    <li><a href="/add-jobs">Add Jobs</a></li>
+                    <li><a href="/jobs">Show Jobs</a></li>
+                    <li><a href="/add-skills">Skills</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Project</a>
+                <ul class="submenu">
+                    <li><a href="/showprojects">Projects</a></li>
+                    <li><a href="/showprojects">Add Task</a></li>
+                    <li><a href="/add-project">Add Project</a></li>
+                </ul>
+            </li>
+            <li><a href="/end">Compltion</a></li>
+            <li><a href="/certification">Certification</a></li>
+            <li><a href="#">Notice Board</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">License</a></li>
+        </ul>
+    </div>
+    <div class="main-con" style="margin-left: 250px; ;">
+        <h2>Candidate Overall Progress</h2>
+
+        <br />
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Total Task</th>
+                    <th>Completed</th>
+                    <th>Percentage</th>
+                    <th>Final Form</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each candidateTaskData}}
+                <tr>
+                    <form action="/auth/addDataforCertificate" method="post">
+                        <td>{{@key}}</td>
+                        <td>{{this.userData.title}}</td>
+                        <td>{{this.totalTasks}}</td>
+                        <td>{{this.completedTasks}}</td>
+                        <td>{{this.completionPercentage}}</td>
+                        <input type="hidden" value="{{this.userData.email}}" name="email">
+                        <input type="hidden" value="{{this.userData.title}}" name="title">
+                        <input type="hidden" value="{{@key}}" name="name">
+                        <td><button type="submit">Sent</button></td>
+                    </form>
+
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+
+    </div>
+
+
+</body>
+
+</html>
